@@ -1,5 +1,10 @@
 apply plugin: 'java'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'io.reactivex:rxjava:1.1.1'
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+    compile project(':domain')
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile project(':repository')
 }
