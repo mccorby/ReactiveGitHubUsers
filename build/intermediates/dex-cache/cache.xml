@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/jco59/Tutorials/RxGitHub/domain/build/libs/domain.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="cc7ac571e1e27c796e7ef6221930f30b581a94cc">
+        <dex dex="/Users/jco59/Tutorials/RxGitHub/app/build/intermediates/pre-dexed/debug/domain_3a50409b92388ff890d465a552b4e9c5b7eaaf25.jar" />
+    </item>
+
+</items>

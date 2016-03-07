@@ -3,18 +3,14 @@ package com.mccorby.reactivegithubusers.datasource.entities;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by jco59 on 07/03/2016.
- */
-public class ApiUser {
-
+public class ApiSummaryUser {
 
     @SerializedName("login")
     @Expose
     private String login;
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private int id;
     @SerializedName("avatar_url")
     @Expose
     private String avatarUrl;
@@ -54,51 +50,9 @@ public class ApiUser {
     @SerializedName("received_events_url")
     @Expose
     private String receivedEventsUrl;
-    @SerializedName("type")
-    @Expose
-    private String type;
     @SerializedName("site_admin")
     @Expose
-    private Boolean siteAdmin;
-    @SerializedName("name")
-    @Expose
-    private String name;
-    @SerializedName("company")
-    @Expose
-    private Object company;
-    @SerializedName("blog")
-    @Expose
-    private String blog;
-    @SerializedName("location")
-    @Expose
-    private String location;
-    @SerializedName("email")
-    @Expose
-    private String email;
-    @SerializedName("hireable")
-    @Expose
-    private Object hireable;
-    @SerializedName("bio")
-    @Expose
-    private Object bio;
-    @SerializedName("public_repos")
-    @Expose
-    private Integer publicRepos;
-    @SerializedName("public_gists")
-    @Expose
-    private Integer publicGists;
-    @SerializedName("followers")
-    @Expose
-    private Integer followers;
-    @SerializedName("following")
-    @Expose
-    private Integer following;
-    @SerializedName("created_at")
-    @Expose
-    private String createdAt;
-    @SerializedName("updated_at")
-    @Expose
-    private String updatedAt;
+    private boolean siteAdmin;
 
     /**
      * @return The login
@@ -114,18 +68,28 @@ public class ApiUser {
         this.login = login;
     }
 
+    public ApiSummaryUser withLogin(String login) {
+        this.login = login;
+        return this;
+    }
+
     /**
      * @return The id
      */
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
     /**
      * @param id The id
      */
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public ApiSummaryUser withId(int id) {
+        this.id = id;
+        return this;
     }
 
     /**
@@ -142,6 +106,11 @@ public class ApiUser {
         this.avatarUrl = avatarUrl;
     }
 
+    public ApiSummaryUser withAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+        return this;
+    }
+
     /**
      * @return The gravatarId
      */
@@ -154,6 +123,11 @@ public class ApiUser {
      */
     public void setGravatarId(String gravatarId) {
         this.gravatarId = gravatarId;
+    }
+
+    public ApiSummaryUser withGravatarId(String gravatarId) {
+        this.gravatarId = gravatarId;
+        return this;
     }
 
     /**
@@ -170,6 +144,11 @@ public class ApiUser {
         this.url = url;
     }
 
+    public ApiSummaryUser withUrl(String url) {
+        this.url = url;
+        return this;
+    }
+
     /**
      * @return The htmlUrl
      */
@@ -182,6 +161,11 @@ public class ApiUser {
      */
     public void setHtmlUrl(String htmlUrl) {
         this.htmlUrl = htmlUrl;
+    }
+
+    public ApiSummaryUser withHtmlUrl(String htmlUrl) {
+        this.htmlUrl = htmlUrl;
+        return this;
     }
 
     /**
@@ -198,6 +182,11 @@ public class ApiUser {
         this.followersUrl = followersUrl;
     }
 
+    public ApiSummaryUser withFollowersUrl(String followersUrl) {
+        this.followersUrl = followersUrl;
+        return this;
+    }
+
     /**
      * @return The followingUrl
      */
@@ -210,6 +199,11 @@ public class ApiUser {
      */
     public void setFollowingUrl(String followingUrl) {
         this.followingUrl = followingUrl;
+    }
+
+    public ApiSummaryUser withFollowingUrl(String followingUrl) {
+        this.followingUrl = followingUrl;
+        return this;
     }
 
     /**
@@ -226,6 +220,11 @@ public class ApiUser {
         this.gistsUrl = gistsUrl;
     }
 
+    public ApiSummaryUser withGistsUrl(String gistsUrl) {
+        this.gistsUrl = gistsUrl;
+        return this;
+    }
+
     /**
      * @return The starredUrl
      */
@@ -238,6 +237,11 @@ public class ApiUser {
      */
     public void setStarredUrl(String starredUrl) {
         this.starredUrl = starredUrl;
+    }
+
+    public ApiSummaryUser withStarredUrl(String starredUrl) {
+        this.starredUrl = starredUrl;
+        return this;
     }
 
     /**
@@ -254,6 +258,11 @@ public class ApiUser {
         this.subscriptionsUrl = subscriptionsUrl;
     }
 
+    public ApiSummaryUser withSubscriptionsUrl(String subscriptionsUrl) {
+        this.subscriptionsUrl = subscriptionsUrl;
+        return this;
+    }
+
     /**
      * @return The organizationsUrl
      */
@@ -266,6 +275,11 @@ public class ApiUser {
      */
     public void setOrganizationsUrl(String organizationsUrl) {
         this.organizationsUrl = organizationsUrl;
+    }
+
+    public ApiSummaryUser withOrganizationsUrl(String organizationsUrl) {
+        this.organizationsUrl = organizationsUrl;
+        return this;
     }
 
     /**
@@ -282,6 +296,11 @@ public class ApiUser {
         this.reposUrl = reposUrl;
     }
 
+    public ApiSummaryUser withReposUrl(String reposUrl) {
+        this.reposUrl = reposUrl;
+        return this;
+    }
+
     /**
      * @return The eventsUrl
      */
@@ -294,6 +313,11 @@ public class ApiUser {
      */
     public void setEventsUrl(String eventsUrl) {
         this.eventsUrl = eventsUrl;
+    }
+
+    public ApiSummaryUser withEventsUrl(String eventsUrl) {
+        this.eventsUrl = eventsUrl;
+        return this;
     }
 
     /**
@@ -310,213 +334,28 @@ public class ApiUser {
         this.receivedEventsUrl = receivedEventsUrl;
     }
 
-    /**
-     * @return The type
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * @param type The type
-     */
-    public void setType(String type) {
-        this.type = type;
+    public ApiSummaryUser withReceivedEventsUrl(String receivedEventsUrl) {
+        this.receivedEventsUrl = receivedEventsUrl;
+        return this;
     }
 
     /**
      * @return The siteAdmin
      */
-    public Boolean getSiteAdmin() {
+    public boolean isSiteAdmin() {
         return siteAdmin;
     }
 
     /**
      * @param siteAdmin The site_admin
      */
-    public void setSiteAdmin(Boolean siteAdmin) {
+    public void setSiteAdmin(boolean siteAdmin) {
         this.siteAdmin = siteAdmin;
     }
 
-    /**
-     * @return The name
-     */
-    public String getName() {
-        return name;
+    public ApiSummaryUser withSiteAdmin(boolean siteAdmin) {
+        this.siteAdmin = siteAdmin;
+        return this;
     }
 
-    /**
-     * @param name The name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * @return The company
-     */
-    public Object getCompany() {
-        return company;
-    }
-
-    /**
-     * @param company The company
-     */
-    public void setCompany(Object company) {
-        this.company = company;
-    }
-
-    /**
-     * @return The blog
-     */
-    public String getBlog() {
-        return blog;
-    }
-
-    /**
-     * @param blog The blog
-     */
-    public void setBlog(String blog) {
-        this.blog = blog;
-    }
-
-    /**
-     * @return The location
-     */
-    public String getLocation() {
-        return location;
-    }
-
-    /**
-     * @param location The location
-     */
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    /**
-     * @return The email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @param email The email
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
-     * @return The hireable
-     */
-    public Object getHireable() {
-        return hireable;
-    }
-
-    /**
-     * @param hireable The hireable
-     */
-    public void setHireable(Object hireable) {
-        this.hireable = hireable;
-    }
-
-    /**
-     * @return The bio
-     */
-    public Object getBio() {
-        return bio;
-    }
-
-    /**
-     * @param bio The bio
-     */
-    public void setBio(Object bio) {
-        this.bio = bio;
-    }
-
-    /**
-     * @return The publicRepos
-     */
-    public Integer getPublicRepos() {
-        return publicRepos;
-    }
-
-    /**
-     * @param publicRepos The public_repos
-     */
-    public void setPublicRepos(Integer publicRepos) {
-        this.publicRepos = publicRepos;
-    }
-
-    /**
-     * @return The publicGists
-     */
-    public Integer getPublicGists() {
-        return publicGists;
-    }
-
-    /**
-     * @param publicGists The public_gists
-     */
-    public void setPublicGists(Integer publicGists) {
-        this.publicGists = publicGists;
-    }
-
-    /**
-     * @return The followers
-     */
-    public Integer getFollowers() {
-        return followers;
-    }
-
-    /**
-     * @param followers The followers
-     */
-    public void setFollowers(Integer followers) {
-        this.followers = followers;
-    }
-
-    /**
-     * @return The following
-     */
-    public Integer getFollowing() {
-        return following;
-    }
-
-    /**
-     * @param following The following
-     */
-    public void setFollowing(Integer following) {
-        this.following = following;
-    }
-
-    /**
-     * @return The createdAt
-     */
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    /**
-     * @param createdAt The created_at
-     */
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    /**
-     * @return The updatedAt
-     */
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    /**
-     * @param updatedAt The updated_at
-     */
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }

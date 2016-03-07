@@ -1,4 +1,4 @@
-package com.mccorby.reactivegithubusers.repository.datasource;
+package com.mccorby.reactivegithubusers.datasource;
 
 import com.mccorby.reactivegithubusers.domain.entities.GitHubUser;
 
