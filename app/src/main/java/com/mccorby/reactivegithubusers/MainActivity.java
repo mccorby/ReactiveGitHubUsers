@@ -9,8 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.mccorby.reactivegithubusers.datasource.GitHubUserApi;
 import com.mccorby.reactivegithubusers.datasource.NetworkDatasourceImpl;
-import com.mccorby.reactivegithubusers.datasource.RestApi;
 import com.mccorby.reactivegithubusers.datasource.UserDatasource;
 import com.mccorby.reactivegithubusers.domain.UserRepositoryImpl;
 import com.mccorby.reactivegithubusers.domain.entities.GitHubUser;
@@ -54,14 +54,14 @@ public class MainActivity extends AppCompatActivity implements UserListView {
 
     private void injectObjects() {
 
-        RestApi restApi = new Retrofit.Builder()
+        GitHubUserApi gitHubUserApi = new Retrofit.Builder()
                 .baseUrl("https://api.github.com")
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(RestApi.class);
+                .create(GitHubUserApi.class);
 
-        UserDatasource userDatasource = new NetworkDatasourceImpl(restApi);
+        UserDatasource userDatasource = new NetworkDatasourceImpl(gitHubUserApi);
         UserRepository repository = new UserRepositoryImpl(userDatasource);
         GetUserList getUserList = new GetUserList(Executors.newSingleThreadExecutor(),
                 AndroidSchedulers.mainThread(),

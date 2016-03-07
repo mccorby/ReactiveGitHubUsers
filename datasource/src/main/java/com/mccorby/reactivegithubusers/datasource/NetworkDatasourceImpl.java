@@ -14,9 +14,9 @@ import rx.functions.Func1;
  */
 public class NetworkDatasourceImpl implements UserDatasource {
 
-    private RestApi api;
+    private GitHubUserApi api;
 
-    public NetworkDatasourceImpl(RestApi api) {
+    public NetworkDatasourceImpl(GitHubUserApi api) {
 
         this.api = api;
     }
