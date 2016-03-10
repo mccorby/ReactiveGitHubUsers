@@ -3,6 +3,8 @@ package com.mccorby.reactivegithubusers;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -18,6 +20,8 @@ import com.mccorby.reactivegithubusers.domain.interactors.GetUserList;
 import com.mccorby.reactivegithubusers.domain.repository.UserRepository;
 import com.mccorby.reactivegithubusers.list.ListPresenter;
 import com.mccorby.reactivegithubusers.list.UserListView;
+import com.mccorby.reactivegithubusers.ui.UserItemListener;
+import com.mccorby.reactivegithubusers.ui.UserListAdapter;
 
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -27,11 +31,12 @@ import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
 import rx.android.schedulers.AndroidSchedulers;
 
-public class MainActivity extends AppCompatActivity implements UserListView {
+public class MainActivity extends AppCompatActivity implements UserListView, UserItemListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private ListPresenter presenter;
+    private UserListAdapter listAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,19 @@ public class MainActivity extends AppCompatActivity implements UserListView {
                 invokeGitHub();
             }
         });
+
+        RecyclerView rv = (RecyclerView) findViewById(R.id.users_recycler_view);
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        rv.setHasFixedSize(true);
+
+        // use a linear layout manager
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+        rv.setLayoutManager(mLayoutManager);
+
+        // specify an adapter (see also next example)
+        listAdapter = new UserListAdapter(this);
+        rv.setAdapter(listAdapter);
 
         injectObjects();
 
@@ -107,8 +125,12 @@ public class MainActivity extends AppCompatActivity implements UserListView {
 
     @Override
     public void refresh(List<GitHubUser> o) {
-        for (GitHubUser user : o) {
-            Log.d(TAG, user.toString());
-        }
+        listAdapter.setData(o);
+        listAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void delete(int position) {
+        presenter.delete(position);
     }
 }

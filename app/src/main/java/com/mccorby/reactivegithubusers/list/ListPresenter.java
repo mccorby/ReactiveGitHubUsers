@@ -48,4 +48,9 @@ public class ListPresenter implements Presenter {
     public void onPause() {
 
     }
+
+    @Override
+    public void delete(int position) {
+
+    }
 }

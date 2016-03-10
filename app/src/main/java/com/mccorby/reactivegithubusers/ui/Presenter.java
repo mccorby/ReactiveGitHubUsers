@@ -6,4 +6,6 @@ package com.mccorby.reactivegithubusers.ui;
 public interface Presenter {
     void onResume();
     void onPause();
+
+    void delete(int position);
 }

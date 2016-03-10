@@ -14,7 +14,21 @@
     tools:showIn="@layout/activity_main">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/dummy_text"
+        android:text="@string/dummy_text"
+        android:lines="5"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:layout_alignParentBottom="true"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/dummy_text"
+        android:id="@+id/users_recycler_view"
+        android:scrollbars="vertical"/>
+
+
+
 </RelativeLayout>

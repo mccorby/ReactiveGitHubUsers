@@ -26,6 +26,7 @@ public class NetworkDatasourceImpl implements UserDatasource {
     public Observable<List<GitHubUser>> userList() {
         final ApiMapper mapper = new ApiMapper();
         Observable<List<GitHubUser>> listObservable = api.getUsers()
+                .cache()
                 .flatMap(new Func1<List<ApiSummaryUser>, Observable<ApiSummaryUser>>() {
                     @Override
                     public Observable<ApiSummaryUser> call(List<ApiSummaryUser> apiSummaryUsers) {
