@@ -16,6 +16,7 @@ import com.mccorby.reactivegithubusers.datasource.NetworkDatasourceImpl;
 import com.mccorby.reactivegithubusers.datasource.UserDatasource;
 import com.mccorby.reactivegithubusers.domain.UserRepositoryImpl;
 import com.mccorby.reactivegithubusers.domain.entities.GitHubUser;
+import com.mccorby.reactivegithubusers.domain.interactors.DeleteUser;
 import com.mccorby.reactivegithubusers.domain.interactors.GetUserList;
 import com.mccorby.reactivegithubusers.domain.repository.UserRepository;
 import com.mccorby.reactivegithubusers.list.ListPresenter;
@@ -84,7 +85,10 @@ public class MainActivity extends AppCompatActivity implements UserListView, Use
         GetUserList getUserList = new GetUserList(Executors.newSingleThreadExecutor(),
                 AndroidSchedulers.mainThread(),
                 repository);
-        presenter = new ListPresenter(getUserList, this);
+        DeleteUser deleteUser = new DeleteUser(Executors.newSingleThreadExecutor(),
+                AndroidSchedulers.mainThread(),
+                repository);
+        presenter = new ListPresenter(getUserList, deleteUser, this);
     }
 
     private void invokeGitHub() {
@@ -126,6 +130,12 @@ public class MainActivity extends AppCompatActivity implements UserListView, Use
     @Override
     public void refresh(List<GitHubUser> o) {
         listAdapter.setData(o);
+        listAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void replace(GitHubUser gitHubUser, int position) {
+        listAdapter.setData(gitHubUser, position);
         listAdapter.notifyDataSetChanged();
     }
 

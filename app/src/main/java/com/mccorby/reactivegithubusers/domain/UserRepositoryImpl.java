@@ -29,4 +29,9 @@ public class UserRepositoryImpl implements UserRepository {
     public Observable<GitHubUser> getUserDetails(String id) {
         return userDatasource.user(id);
     }
+
+    @Override
+    public Observable<List<GitHubUser>> deleteAndRetrieveAnother(int position) {
+        return userDatasource.userList(1);
+    }
 }

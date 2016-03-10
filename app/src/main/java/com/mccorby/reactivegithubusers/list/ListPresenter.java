@@ -1,6 +1,7 @@
 package com.mccorby.reactivegithubusers.list;
 
 import com.mccorby.reactivegithubusers.domain.entities.GitHubUser;
+import com.mccorby.reactivegithubusers.domain.interactors.DeleteUser;
 import com.mccorby.reactivegithubusers.domain.interactors.GetUserList;
 import com.mccorby.reactivegithubusers.ui.Presenter;
 
@@ -14,11 +15,13 @@ import rx.Subscriber;
 public class ListPresenter implements Presenter {
 
     private GetUserList getUserList;
+    private DeleteUser deleteUser;
     private UserListView view;
 
 
-    public ListPresenter(GetUserList getUserList, UserListView view) {
+    public ListPresenter(GetUserList getUserList, DeleteUser deleteUser, UserListView view) {
         this.getUserList = getUserList;
+        this.deleteUser = deleteUser;
         this.view = view;
     }
 
@@ -50,7 +53,25 @@ public class ListPresenter implements Presenter {
     }
 
     @Override
-    public void delete(int position) {
+    public void delete(final int position) {
+        deleteUser.setPosition(position);
+        deleteUser.execute(new Subscriber<List<GitHubUser>>() {
+            @Override
+            public void onCompleted() {
 
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<GitHubUser> o) {
+                if (o.size() > 0) {
+                    view.replace(o.get(0), position);
+                }
+            }
+        });
     }
 }

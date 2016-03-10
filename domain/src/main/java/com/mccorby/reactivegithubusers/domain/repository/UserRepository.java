@@ -14,5 +14,7 @@ public interface UserRepository {
     Observable<List<GitHubUser>> getListOfUsers();
 
     Observable<GitHubUser> getUserDetails(String id);
+
+    Observable<List<GitHubUser>> deleteAndRetrieveAnother(int position);
 }
 

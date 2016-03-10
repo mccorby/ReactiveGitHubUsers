@@ -14,4 +14,6 @@ public interface UserListView {
     void showError(Throwable e);
 
     void refresh(List<GitHubUser> o);
+
+    void replace(GitHubUser gitHubUser, int position);
 }

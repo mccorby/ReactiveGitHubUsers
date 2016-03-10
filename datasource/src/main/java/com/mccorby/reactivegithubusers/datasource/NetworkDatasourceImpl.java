@@ -24,8 +24,14 @@ public class NetworkDatasourceImpl implements UserDatasource {
 
     @Override
     public Observable<List<GitHubUser>> userList() {
+        return userList(LIMIT);
+    }
+
+    @Override
+    public Observable<List<GitHubUser>> userList(int limit) {
         final ApiMapper mapper = new ApiMapper();
-        Observable<List<GitHubUser>> listObservable = api.getUsers()
+        int randomOffset = (int) Math.floor(Math.random()*500);
+        Observable<List<GitHubUser>> listObservable = api.getUsers(randomOffset)
                 .cache()
                 .flatMap(new Func1<List<ApiSummaryUser>, Observable<ApiSummaryUser>>() {
                     @Override
@@ -39,7 +45,7 @@ public class NetworkDatasourceImpl implements UserDatasource {
                         return mapper.toGitHubUser(apiSummaryUser);
                     }
                 })
-                .limit(LIMIT)
+                .limit(limit)
                 .toList();
         return listObservable;
     }

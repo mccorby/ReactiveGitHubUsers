@@ -56,6 +56,12 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
         return userList != null ? userList.size() : 0;
     }
 
+    public void setData(GitHubUser gitHubUser, int position) {
+        if (userList.size() - 1 >= position) {
+            userList.set(position, gitHubUser);
+        }
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView login;
