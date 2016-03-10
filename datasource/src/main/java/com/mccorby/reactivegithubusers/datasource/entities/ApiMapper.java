@@ -10,6 +10,8 @@ public class ApiMapper implements DomainMapper<ApiSummaryUser> {
 
     @Override
     public GitHubUser toGitHubUser(ApiSummaryUser source) {
-        return null;
+        GitHubUser gitHubUser = new GitHubUser();
+        gitHubUser.setLogin(source.getLogin());
+        return gitHubUser;
     }
 }
